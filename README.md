@@ -3,7 +3,7 @@ A Message Simulator for Clusters
 
 This project is a lightweight testing automation tool for helping validate a cluster's High Availability, performance, and resilience.
 
-![The Message Simulator](http://levvel.io/wp-content/uploads/2015/11/Message-Simulator.png)
+![The Message Simulator](http://levvel.io/wp-content/uploads/2015/11/Message-Simulator-Logo.png)
 
 This project supports creating normal messaging operational traffic load with the ability to subject the cluster to external events in real time. If you know what type of traffic your cluster will handle, then this repository can help you predict and identify where bottlenecks will happen ahead of a production outage (at midnight). The focus for this initial version is for RabbitMQ clusters with the ability to support Redis and ZeroMQ in the future.
 
