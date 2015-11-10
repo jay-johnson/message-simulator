@@ -1,0 +1,77 @@
+{
+    "Simulation" : {
+        "Name"      : "Hello World",
+        "StopFile"  : "/tmp/stop_hello_world",
+        "PauseFile" : "/tmp/pause_hello_world",
+        "Interval"  : "0.0001",
+        "CheckDone" : "0.0001",
+        "ResetAll"  : true,
+        "Type"      : "Rabbit",
+        "Rabbit"    : {
+            "Name"          : "Hello_World_Pub",
+            "BrokerAddress" : [ "rabbit1", "rabbit2", "rabbit3" ],
+            "BrokerURL"     : "amqp://guest:guest@rabbit1:5672/%2F?connection_attempts=3&heartbeat_interval=3600",
+            "Account"       : {
+                              "User"        : "guest",
+                              "Password"    : "guest"
+            }
+        },
+        "Consumers" : {},
+        "BrokerEntities": {
+            "Exchanges" : [ 
+                        {
+                            "Type"          : "Topic",
+                            "Name"          : "Hello.Ex",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        }
+            ],
+            "Queues"    : [
+                        {
+                            "Name"          : "hello",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        }
+            ],
+            "Bindings"  : [
+                        {
+                            "Exchange"      : "Hello.Ex",
+                            "Queue"         : "hello",
+                            "RoutingKey"    : "example.text"
+                        }
+            ],
+            "Messages"  : [
+                        {
+                            "NumberToSend"  : "1",
+                            "MessageType"   : "AMQP",
+                            "Exchange"      : "Hello.Ex",
+                            "Queue"         : "hello",
+                            "ReplyTo"       : "helloresponses",
+                            "RoutingKey"    : "",
+                            "Headers"       : {
+                                                "Hello"     : "World",
+                                                "Message"   : "1"
+                                            },
+                            "Body"          : {
+                                                "Data"      : "Hello World"
+                                            },
+                            "AppID"         : "",
+                            "ClusterID"     : "",
+                            "UserID"        : "",
+                            "MessageID"     : "",        
+                            "ContentType"   : "application/json",
+                            "Encoding"      : "",
+                            "DeliveryMode"  : "2",
+                            "Priority"      : "0",
+                            "CorrelationID" : "",
+                            "Expiration"    : "",
+                            "Timestamp"     : ""
+                        }
+            ]
+        }
+    }
+}

@@ -1,0 +1,2359 @@
+{
+    "Simulation" : {
+        "Name"      : "Stress Test 1 - Sending 10000000 Messages to a Fanout Exchange that copies each message to many Queues",
+        "StopFile"  : "/tmp/stop_stress_1",
+        "PauseFile" : "/tmp/pause_stress_1",
+        "Interval"  : "0.0000001",
+        "CheckDone" : "0.0000001",
+        "ResetAll"  : true,
+        "Type"      : "Rabbit",
+        "Rabbit"    : {
+            "Name"          : "Stress_1_Pub",
+            "BrokerAddress" : [ "rabbit1", "rabbit2", "rabbit3" ],
+            "BrokerURL"     : "amqp://guest:guest@rabbit1:5672/%2F?connection_attempts=3&heartbeat_interval=3600",
+            "Account"       : {
+                              "User"        : "guest",
+                              "Password"    : "guest"
+            }
+        },
+        "Consumers" : {},
+        "BrokerEntities": {
+            "Exchanges" : [ 
+                        {
+                            "Type"          : "Fanout",
+                            "Name"          : "Stress_1.Ex",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Type"          : "Topic",
+                            "Name"          : "Stress_1_Control.Ex",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        }
+            ],
+            "Queues"    : [
+                        {
+                            "Name"          : "Stress_1_A_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1_B_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1_C_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1_B_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1_D_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1_E_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1_F_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1_G_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1_H_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1_I_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1_J_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1_K_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1_L_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1_M_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1_N_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1_O_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1_P_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1_Q_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1_R_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1_S_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1_T_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1_U_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1_V_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1_W_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1_X_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1_Y_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1_Z_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1a_A_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1a_B_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1a_C_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1a_B_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1a_D_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1a_E_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1a_F_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1a_G_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1a_H_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1a_I_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1a_J_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1a_K_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1a_L_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1a_M_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1a_N_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1a_O_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1a_P_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1a_Q_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1a_R_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1a_S_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1a_T_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1a_U_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1a_V_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1a_W_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1a_X_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1a_Y_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1a_Z_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1b_A_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1b_B_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1b_C_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1b_B_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1b_D_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1b_E_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1b_F_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1b_G_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1b_H_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1b_I_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1b_J_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1b_K_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1b_L_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1b_M_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1b_N_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1b_O_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1b_P_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1b_Q_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1b_R_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1b_S_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1b_T_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1b_U_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1b_V_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1b_W_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1b_X_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1b_Y_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1b_Z_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1c_A_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1c_B_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1c_C_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1c_B_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1c_D_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1c_E_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1c_F_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1c_G_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1c_H_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1c_I_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1c_J_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1c_K_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1c_L_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1c_M_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1c_N_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1c_O_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1c_P_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1c_Q_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1c_R_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1c_S_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1c_T_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1c_U_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1c_V_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1c_W_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1c_X_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1c_Y_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1c_Z_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1d_A_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1d_B_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1d_C_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1d_B_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1d_D_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1d_E_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1d_F_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1d_G_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1d_H_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1d_I_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1d_J_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1d_K_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1d_L_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1d_M_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1d_N_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1d_O_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1d_P_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1d_Q_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1d_R_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1d_S_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1d_T_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1d_U_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1d_V_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1d_W_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1d_X_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1d_Y_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1d_Z_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1e_A_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1e_B_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1e_C_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1e_B_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1e_D_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1e_E_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1e_F_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1e_G_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1e_H_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1e_I_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1e_J_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1e_K_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1e_L_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1e_M_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1e_N_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1e_O_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1e_P_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1e_Q_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1e_R_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1e_S_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1e_T_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1e_U_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1e_V_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1e_W_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1e_X_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1e_Y_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1e_Z_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1f_A_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1f_B_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1f_C_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1f_B_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1f_D_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1f_E_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1f_F_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1f_G_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1f_H_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1f_I_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1f_J_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1f_K_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1f_L_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1f_M_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1f_N_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1f_O_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1f_P_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1f_Q_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1f_R_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1f_S_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1f_T_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1f_U_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1f_V_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1f_W_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1f_X_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1f_Y_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1f_Z_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Stress_1_Control",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        }
+            ],
+            "Bindings"  : [
+                        {
+                            "Exchange"      : "Stress_1_Control.Ex",
+                            "Queue"         : "Stress_1_Control",
+                            "RoutingKey"    : "Stress_1.Control"
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1_A_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1_B_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1_C_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1_B_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1_D_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1_E_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1_F_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1_G_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1_H_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1_I_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1_J_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1_K_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1_L_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1_M_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1_N_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1_O_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1_P_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1_Q_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1_R_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1_S_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1_T_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1_U_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1_V_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1_W_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1_X_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1_Y_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1_Z_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1a_A_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1a_B_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1a_C_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1a_B_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1a_D_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1a_E_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1a_F_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1a_G_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1a_H_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1a_I_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1a_J_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1a_K_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1a_L_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1a_M_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1a_N_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1a_O_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1a_P_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1a_Q_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1a_R_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1a_S_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1a_T_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1a_U_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1a_V_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1a_W_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1a_X_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1a_Y_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1a_Z_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1b_A_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1b_B_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1b_C_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1b_B_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1b_D_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1b_E_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1b_F_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1b_G_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1b_H_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1b_I_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1b_J_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1b_K_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1b_L_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1b_M_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1b_N_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1b_O_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1b_P_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1b_Q_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1b_R_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1b_S_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1b_T_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1b_U_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1b_V_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1b_W_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1b_X_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1b_Y_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1b_Z_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1c_A_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1c_B_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1c_C_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1c_B_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1c_D_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1c_E_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1c_F_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1c_G_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1c_H_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1c_I_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1c_J_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1c_K_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1c_L_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1c_M_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1c_N_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1c_O_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1c_P_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1c_Q_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1c_R_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1c_S_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1c_T_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1c_U_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1c_V_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1c_W_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1c_X_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1c_Y_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1c_Z_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1d_A_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1d_B_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1d_C_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1d_B_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1d_D_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1d_E_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1d_F_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1d_G_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1d_H_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1d_I_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1d_J_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1d_K_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1d_L_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1d_M_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1d_N_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1d_O_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1d_P_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1d_Q_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1d_R_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1d_S_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1d_T_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1d_U_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1d_V_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1d_W_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1d_X_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1d_Y_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1d_Z_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1e_A_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1e_B_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1e_C_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1e_B_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1e_D_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1e_E_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1e_F_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1e_G_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1e_H_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1e_I_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1e_J_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1e_K_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1e_L_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1e_M_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1e_N_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1e_O_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1e_P_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1e_Q_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1e_R_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1e_S_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1e_T_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1e_U_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1e_V_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1e_W_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1e_X_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1e_Y_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1e_Z_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1f_A_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1f_B_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1f_C_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1f_B_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1f_D_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1f_E_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1f_F_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1f_G_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1f_H_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1f_I_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1f_J_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1f_K_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1f_L_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1f_M_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1f_N_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1f_O_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1f_P_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1f_Q_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1f_R_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1f_S_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1f_T_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1f_U_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1f_V_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1f_W_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1f_X_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1f_Y_Messages",
+                            "RoutingKey"    : ""
+                        },
+                        {
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "Stress_1f_Z_Messages",
+                            "RoutingKey"    : ""
+                        }
+            ],
+            "Messages"  : [
+                        {
+                            "NumberToSend"  : "1",
+                            "MessageType"   : "Start Worker Publisher",
+                            "NumberWorkers" : "10",
+                            "Command"       : "nohup ./run_message_simulation.py -f simulations/rabbit/stress/stress_1_b_send_10000000_msgs_over_fanout_to_many_queues.json &"
+                        },
+                        {
+                            "NumberToSend"  : "10000000",
+                            "MessageType"   : "AMQP",
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "",
+                            "ReplyTo"       : "Stress_1_Responses",
+                            "RoutingKey"    : "",
+                            "Headers"       : {
+                                                "Test"      : "Stress 1 Master",
+                                                "Message"   : "Route to All Queues by Fanout"
+                                            },
+                            "Body"          : {
+                                                "Data"      : "Route to All Queues by Fanout"
+                                            },
+                            "AppID"         : "",
+                            "ClusterID"     : "",
+                            "UserID"        : "",
+                            "MessageID"     : "",        
+                            "ContentType"   : "application/json",
+                            "Encoding"      : "",
+                            "DeliveryMode"  : "2",
+                            "Priority"      : "0",
+                            "CorrelationID" : "",
+                            "Expiration"    : "",
+                            "Timestamp"     : ""
+                        }
+            ]
+        }
+    }
+}

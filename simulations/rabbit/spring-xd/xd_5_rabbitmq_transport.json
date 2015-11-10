@@ -1,0 +1,87 @@
+{
+    "Simulation" : {
+        "Name"      : "Setting up the Exchanges and Queues for Spring XD with Sink Streams",
+        "StopFile"  : "/tmp/stop_test_xd_5",
+        "PauseFile" : "/tmp/pause_test_xd_5",
+        "Interval"  : "0.0001",
+        "CheckDone" : "0.0001",
+        "ResetAll"  : false,
+        "Type"      : "Rabbit",
+        "Rabbit"    : {
+            "Name"          : "MS_XD",
+            "BrokerAddress" : [ "rabbit1", "rabbit2", "rabbit3" ],
+            "BrokerURL"     : "amqp://guest:guest@rabbit1:5672/%2F?connection_attempts=3&heartbeat_interval=3600",
+            "Account"       : {
+                              "User"        : "guest",
+                              "Password"    : "guest"
+            }
+        },
+        "Consumers" : {},
+        "BrokerEntities": {
+            "Exchanges" : [ 
+                        {
+                            "Type"          : "Topic",
+                            "Name"          : "SpringXD.Ex",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        }
+            ],
+            "Queues"    : [
+                        {
+                            "Name"          : "SpringXD.Test5.Queue.A",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "RabbitSourceToFileSink",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        }
+            ],
+            "Bindings"  : [
+                        {
+                            "Exchange"      : "SpringXD.Ex",
+                            "Queue"         : "SpringXD.Test5.Queue.A",
+                            "RoutingKey"    : "Key.Test5.Queue.A"
+                        },
+                        {
+                            "Exchange"      : "SpringXD.Ex",
+                            "Queue"         : "RabbitSourceToFileSink",
+                            "RoutingKey"    : "Key.Test5.WriteToFile"
+                        }
+            ],
+            "Messages"  : [
+                        {
+                            "NumberToSend"  : "1",
+                            "MessageType"   : "AMQP",
+                            "Exchange"      : "amq.topic",
+                            "Queue"         : "",
+                            "ReplyTo"       : "rabbittest_Reponses",
+                            "RoutingKey"    : "Key.Test5.Queue.A",
+                            "Headers"       : {
+                                                "TestName"  : "Route to rabbittest for XD 5"
+                                            },
+                            "Body"          : {
+                                                "Data"      : "This is the Data from the Simulator's Spring XD Sink Stream Test 5"
+                                            },
+                            "AppID"         : "",
+                            "ClusterID"     : "",
+                            "UserID"        : "",
+                            "MessageID"     : "",        
+                            "ContentType"   : "application/json",
+                            "Encoding"      : "",
+                            "DeliveryMode"  : "2",
+                            "Priority"      : "0",
+                            "CorrelationID" : "",
+                            "Expiration"    : "",
+                            "Timestamp"     : ""
+                        }            ]
+        }
+    }
+}

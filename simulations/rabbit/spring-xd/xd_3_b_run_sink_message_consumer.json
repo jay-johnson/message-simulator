@@ -1,0 +1,117 @@
+{
+    "Simulation": {
+        "BrokerEntities": {
+            "Bindings": [
+                {
+                    "Exchange": "SpringXD.Sink.Ex",
+                    "Queue": "rabbitsinktest",
+                    "RoutingKey": "Rabbit.MQTT.Test3.Rabbit1"
+                }
+            ],
+            "Exchanges": [
+                {
+                    "Attributes": {},
+                    "AutoDelete": false,
+                    "Durable": false,
+                    "Exclusive": false,
+                    "Name": "SpringXD.Sink.Ex",
+                    "Type": "Topic"
+                }
+            ],
+            "Messages": [
+                {
+                    "AppID": "",
+                    "Body": {
+                        "Data": "This is the Data from the Simulator's Spring XD Sink Stream Test 3"
+                    },
+                    "ClusterID": "",
+                    "ContentType": "application/json",
+                    "CorrelationID": "",
+                    "DeliveryMode": "2",
+                    "Encoding": "",
+                    "Exchange": "SpringXD.Sink.Ex",
+                    "Expiration": "",
+                    "Headers": {
+                        "TestName": "Route to rabbittest for XD 3"
+                    },
+                    "MessageID": "",
+                    "MessageType": "AMQP",
+                    "NumberToSend": "1",
+                    "Priority": "0",
+                    "Queue": "",
+                    "ReplyTo": "rabbittest_Reponses",
+                    "RoutingKey": "Rabbit.MQTT.Test3.Rabbit1",
+                    "Timestamp": "",
+                    "UserID": ""
+                }
+            ],
+            "Queues": [
+                {
+                    "Attributes": {},
+                    "AutoDelete": false,
+                    "Durable": false,
+                    "Exclusive": false,
+                    "Name": "rabbitsinktest"
+                }
+            ]
+        },
+        "CheckDone": "0.5",
+        "Consumer": {
+            "CheckDone": 0.5,
+            "Command": "",
+            "Config": "",
+            "ConsumerTag": "SinkConsumer0_9bc4fdf19d2a4cf7b2fb3a14fb64897",
+            "Debug": false,
+            "Expected": {},
+            "Interval": 0.5,
+            "Name": "SinkConsumer0",
+            "NumberMessages": 10,
+            "PID": "",
+            "PIDDir": "/tmp/",
+            "ProcessObj": "",
+            "Queue": "rabbitsinktest",
+            "ReplyToQueue": "rabbitsinktestResponses",
+            "Starter": "/opt/message-simulator/src/../src/__start_rabbit_mq_consumer.py",
+            "TmpConfigDir": "/tmp/xd3consumers_",
+            "ValidateBody": false
+        },
+        "Consumers": {
+            "ConsumeQueues": [
+                {
+                    "CheckDone": "0.5",
+                    "ConsumeInt": "0.5",
+                    "Expected": {},
+                    "NumConsumers": "1",
+                    "NumberMessages": "10",
+                    "Queue": "rabbitsinktest",
+                    "ReplyToQueue": "rabbitsinktestResponses",
+                    "Starter": "src/__start_rabbit_mq_consumer.py",
+                    "ValidateBody": false
+                }
+            ],
+            "PIDDir": "/tmp/",
+            "PrefixName": "SinkConsumer",
+            "StopConsumers": "For Number Messages",
+            "TmpConfigDir": "/tmp/xd3consumers_"
+        },
+        "Interval": "0.5",
+        "Name": "Consumer Configuration for Spring XD using Sink Streams",
+        "PauseFile": "/tmp/pause_test_xd_3",
+        "Rabbit": {
+            "Account": {
+                "Password": "guest",
+                "User": "guest"
+            },
+            "BrokerAddress": [
+                "rabbit1",
+                "rabbit2",
+                "rabbit3"
+            ],
+            "BrokerURL": "amqp://guest:guest@rabbit1:5672/%2F?connection_attempts=3&heartbeat_interval=3600",
+            "Name": "SinkConsumer0"
+        },
+        "ResetAll": false,
+        "StopFile": "/tmp/stop_test_xd_3",
+        "Type": "Rabbit"
+    }
+}

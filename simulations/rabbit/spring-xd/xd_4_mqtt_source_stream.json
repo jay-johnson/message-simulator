@@ -1,0 +1,82 @@
+{
+    "Simulation" : {
+        "Name"      : "Setting up the Exchanges and Queues for Spring XD with Sink Streams",
+        "StopFile"  : "/tmp/stop_test_xd_4",
+        "PauseFile" : "/tmp/pause_test_xd_4",
+        "Interval"  : "0.0001",
+        "CheckDone" : "0.0001",
+        "ResetAll"  : false,
+        "Type"      : "Rabbit",
+        "Rabbit"    : {
+            "Name"          : "MS_XD",
+            "BrokerAddress" : [ "rabbit1", "rabbit2", "rabbit3" ],
+            "BrokerURL"     : "amqp://guest:guest@rabbit1:5672/%2F?connection_attempts=3&heartbeat_interval=3600",
+            "Account"       : {
+                              "User"        : "guest",
+                              "Password"    : "guest"
+            }
+        },
+        "Consumers" : {},
+        "BrokerEntities": {
+            "Exchanges" : [ 
+                        {
+                            "Type"          : "Topic",
+                            "Name"          : "SpringXD.MQTT.Ex",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        }
+            ],
+            "Queues"    : [
+                        {
+                            "Name"          : "SpringXD.MQTT.Test4.Queue.A",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "xd.mqtt.test",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        }
+            ],
+            "Bindings"  : [
+                        {
+                            "Exchange"      : "SpringXD.MQTT.Ex",
+                            "Queue"         : "SpringXD.MQTT.Test4.Queue.A",
+                            "RoutingKey"    : "Key.MQTT.Test4.Rabbit1"
+                        }
+            ],
+            "Messages"  : [
+                        {
+                            "NumberToSend"  : "1",
+                            "MessageType"   : "AMQP",
+                            "Exchange"      : "amq.topic",
+                            "Queue"         : "",
+                            "ReplyTo"       : "rabbittest_Reponses",
+                            "RoutingKey"    : "Key.MQTT.Test4.Rabbit1",
+                            "Headers"       : {
+                                                "TestName"  : "Route to rabbittest for XD 4"
+                                            },
+                            "Body"          : {
+                                                "Data"      : "This is the Data from the Simulator's Spring XD Sink Stream Test 4"
+                                            },
+                            "AppID"         : "",
+                            "ClusterID"     : "",
+                            "UserID"        : "",
+                            "MessageID"     : "",        
+                            "ContentType"   : "application/json",
+                            "Encoding"      : "",
+                            "DeliveryMode"  : "2",
+                            "Priority"      : "0",
+                            "CorrelationID" : "",
+                            "Expiration"    : "",
+                            "Timestamp"     : ""
+                        }            ]
+        }
+    }
+}

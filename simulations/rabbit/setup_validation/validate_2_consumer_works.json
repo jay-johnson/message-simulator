@@ -1,0 +1,94 @@
+{
+    "Simulation" : {
+        "Name"      : "Validate Consumer Works",
+        "StopFile"  : "/tmp/stop_test_consumer",
+        "PauseFile" : "/tmp/pause_test_consumer",
+        "Interval"  : "0.0001",
+        "CheckDone" : "0.0001",
+        "ResetAll"  : true,
+        "Type"      : "Rabbit",
+        "Rabbit"    : {
+            "Name"          : "ValidateConsumer",
+            "BrokerAddress" : [ "rabbit1", "rabbit2", "rabbit3" ],
+            "BrokerURL"     : "amqp://guest:guest@rabbit1:5672/%2F?connection_attempts=3&heartbeat_interval=3600",
+            "Account"       : {
+                              "User"        : "guest",
+                              "Password"    : "guest"
+            }
+        },
+        "Consumers" : {
+            "PrefixName"    : "Setup_VC_",
+            "PIDDir"        : "/tmp/",
+            "TmpConfigDir"  : "/tmp/testVconsumers_",
+            "ConsumeQueues" : [
+                        {
+                            "NumConsumers"  : "1",
+                            "Starter"       : "src/__start_rabbit_mq_consumer.py",
+                            "ConsumeInt"    : "0.5",
+                            "CheckDone"     : "0.5",
+                            "Queue"         : "Setup_VC_A_Messages",
+                            "ReplyToQueue"  : "Setup_VC_A_Responses",
+                            "NumberMessages": "10",
+                            "ValidateBody"  : false,
+                            "Expected"      : {}
+                        }
+            ]
+        },
+        "BrokerEntities": {
+            "Exchanges" : [ 
+                        {
+                            "Type"          : "Topic",
+                            "Name"          : "ValidateConsumer.Ex",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        }
+            ],
+            "Queues"    : [
+                        {
+                            "Name"          : "Setup_VC_A_Messages",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        }
+            ],
+            "Bindings"  : [
+                        {
+                            "Exchange"      : "ValidateConsumer.Ex",
+                            "Queue"         : "Setup_VC_A_Messages",
+                            "RoutingKey"    : "control.validate.consumerworks"
+                        }
+            ],
+            "Messages"  : [
+                        {
+                            "NumberToSend"  : "10",
+                            "MessageType"   : "AMQP",
+                            "Exchange"      : "ValidateConsumer.Ex",
+                            "Queue"         : "",
+                            "ReplyTo"       : "",
+                            "RoutingKey"    : "control.validate.consumerworks",
+                            "Headers"       : {
+                                                "Validate"  : "Consumer",
+                                                "This"      : "Works"
+                                            },
+                            "Body"          : {
+                                                "Data"      : "Validate the consumer is able to read this message"
+                                            },
+                            "AppID"         : "",
+                            "ClusterID"     : "",
+                            "UserID"        : "",
+                            "MessageID"     : "",        
+                            "ContentType"   : "application/json",
+                            "Encoding"      : "",
+                            "DeliveryMode"  : "2",
+                            "Priority"      : "0",
+                            "CorrelationID" : "",
+                            "Expiration"    : "",
+                            "Timestamp"     : ""
+                        }
+            ]
+        }
+    }
+}

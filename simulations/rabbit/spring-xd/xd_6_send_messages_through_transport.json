@@ -1,0 +1,87 @@
+{
+    "Simulation" : {
+        "Name"      : "Validating the RabbitMQ Transport is Working",
+        "StopFile"  : "/tmp/stop_test_xd_5",
+        "PauseFile" : "/tmp/pause_test_xd_5",
+        "Interval"  : "0.0001",
+        "CheckDone" : "0.0001",
+        "ResetAll"  : false,
+        "Type"      : "Rabbit",
+        "Rabbit"    : {
+            "Name"          : "MS_XD",
+            "BrokerAddress" : [ "rabbit1", "rabbit2", "rabbit3" ],
+            "BrokerURL"     : "amqp://guest:guest@rabbit1:5672/%2F?connection_attempts=3&heartbeat_interval=3600",
+            "Account"       : {
+                              "User"        : "guest",
+                              "Password"    : "guest"
+            }
+        },
+        "Consumers" : {},
+        "BrokerEntities": {
+            "Exchanges" : [ 
+                        {
+                            "Type"          : "Topic",
+                            "Name"          : "SpringXD.Ex",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        }
+            ],
+            "Queues"    : [
+                        {
+                            "Name"          : "SpringXD.Test5.Queue.A",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "RabbitSourceToFileSink",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        }
+            ],
+            "Bindings"  : [
+                        {
+                            "Exchange"      : "SpringXD.Ex",
+                            "Queue"         : "SpringXD.Test5.Queue.A",
+                            "RoutingKey"    : "Key.Test5.Queue.A"
+                        },
+                        {
+                            "Exchange"      : "SpringXD.Ex",
+                            "Queue"         : "RabbitSourceToFileSink",
+                            "RoutingKey"    : "Key.Test5.WriteToFile"
+                        }
+            ],
+            "Messages"  : [
+                        {
+                            "NumberToSend"  : "5",
+                            "MessageType"   : "AMQP",
+                            "Exchange"      : "SpringXD.Ex",
+                            "Queue"         : "",
+                            "ReplyTo"       : "Test_6_Reponses",
+                            "RoutingKey"    : "Key.Test5.WriteToFile",
+                            "Headers"       : {
+                                                "TestName"  : "Route to RabbitSourceToFileSink for XD 6"
+                                            },
+                            "Body"          : {
+                                                "Data"      : "Test 6 - Validated Test 5 - The RabbitMQ Transport is working"
+                                            },
+                            "AppID"         : "",
+                            "ClusterID"     : "",
+                            "UserID"        : "",
+                            "MessageID"     : "",        
+                            "ContentType"   : "application/json",
+                            "Encoding"      : "",
+                            "DeliveryMode"  : "2",
+                            "Priority"      : "0",
+                            "CorrelationID" : "",
+                            "Expiration"    : "",
+                            "Timestamp"     : ""
+                        }            ]
+        }
+    }
+}

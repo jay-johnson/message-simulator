@@ -1,0 +1,86 @@
+{
+    "Simulation" : {
+        "Name"      : "Reset Cluster and Delete all Entities",
+        "StopFile"  : "/tmp/stop_test_RESET",
+        "PauseFile" : "/tmp/pause_test_RESET",
+        "Interval"  : "0.0001",
+        "CheckDone" : "0.0001",
+        "ResetAll"  : true,
+        "Type"      : "Rabbit",
+        "Rabbit"    : {
+            "Name"          : "RESETCLUSTER",
+            "BrokerAddress" : [ "rabbit1", "rabbit2", "rabbit3" ],
+            "BrokerURL"     : "amqp://guest:guest@rabbit1:5672/%2F?connection_attempts=3&heartbeat_interval=3600",
+            "Account"       : {
+                              "User"        : "guest",
+                              "Password"    : "guest"
+            }
+        },
+        "Consumers" : {},
+        "BrokerEntities": {
+            "Exchanges" : [ 
+
+                        {
+                            "Type"          : "Topic",
+                            "Name"          : "SimulationControl.Ex",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        }
+            ],
+            "Queues"    : [
+                        {
+                            "Name"          : "Rabbit1_ControlMsgs",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Rabbit2_ControlMsgs",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Rabbit3_ControlMsgs",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        }
+            ],
+            "Bindings"  : [
+                        {
+                            "Exchange"      : "SimulationControl.Ex",
+                            "Queue"         : "Rabbit1_ControlMsgs",
+                            "RoutingKey"    : "Simulation_Control.Rabbit1"
+                        },
+                        {
+                            "Exchange"      : "SimulationControl.Ex",
+                            "Queue"         : "Rabbit1_ControlMsgs",
+                            "RoutingKey"    : "Simulation_Control.Rabbit2"
+                        },
+                        {
+                            "Exchange"      : "SimulationControl.Ex",
+                            "Queue"         : "Rabbit3_ControlMsgs",
+                            "RoutingKey"    : "Simulation_Control.Rabbit3"
+                        }
+            ],
+            "Messages"  : [
+                        {
+                            "NumberToSend"  : "1",
+                            "MessageType"   : "Reset All Broker Entities",
+                            "Host"          : "rabbit1",
+                            "User"          : "root",
+                            "Commands"      : [
+                                            ],
+                            "Excepted"      : {
+                                            }
+                        }
+            ]
+        }
+    }
+}

@@ -1,0 +1,129 @@
+{
+    "Simulation" : {
+        "Name"      : "Burst Test - Send 100000 Messages",
+        "StopFile"  : "/tmp/stop_test_load_1",
+        "PauseFile" : "/tmp/pause_test_load_1",
+        "Interval"  : "0.0001",
+        "CheckDone" : "0.0001",
+        "ResetAll"  : false,
+        "Type"      : "Rabbit",
+        "Rabbit"    : {
+            "Name"          : "Burst_1_Pub",
+            "BrokerAddress" : [ "rabbit1", "rabbit2", "rabbit3" ],
+            "BrokerURL"     : "amqp://guest:guest@rabbit1:5672/%2F?connection_attempts=3&heartbeat_interval=3600",
+            "Account"       : {
+                              "User"        : "guest",
+                              "Password"    : "guest"
+            }
+        },
+        "Consumers" : {},
+        "BrokerEntities": {
+            "Exchanges" : [ 
+                        {
+                            "Type"          : "Topic",
+                            "Name"          : "Burst_1.Ex",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        }
+            ],
+            "Queues"    : [
+                        {
+                            "Name"          : "Burst_1_A_Messages",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Burst_1_B_Messages",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Burst_1_A_Responses",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Burst_1_B_Responses",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        }
+            ],
+            "Bindings"  : [
+                        {
+                            "Exchange"      : "Burst_1.Ex",
+                            "Queue"         : "Burst_1_A_Messages",
+                            "RoutingKey"    : "Burst_1.A"
+                        },
+                        {
+                            "Exchange"      : "Burst_1.Ex",
+                            "Queue"         : "Burst_1_B_Messages",
+                            "RoutingKey"    : "Burst_1.B"
+                        }
+            ],
+            "Messages"  : [
+                        {
+                            "NumberToSend"  : "50000",
+                            "MessageType"   : "AMQP",
+                            "Exchange"      : "Burst_1.Ex",
+                            "Queue"         : "",
+                            "ReplyTo"       : "Burst_1_A_Responses",
+                            "RoutingKey"    : "Burst_1.A",
+                            "Headers"       : {
+                                                "Test"      : "Burst 1",
+                                                "Message"   : "Route to A"
+                                            },
+                            "Body"          : {
+                                                "Data"      : "Route to A"
+                                            },
+                            "AppID"         : "",
+                            "ClusterID"     : "",
+                            "UserID"        : "",
+                            "MessageID"     : "",        
+                            "ContentType"   : "application/json",
+                            "Encoding"      : "",
+                            "DeliveryMode"  : "2",
+                            "Priority"      : "0",
+                            "CorrelationID" : "",
+                            "Expiration"    : "",
+                            "Timestamp"     : ""
+                        },
+                        {
+                            "NumberToSend"  : "50000",
+                            "MessageType"   : "AMQP",
+                            "Exchange"      : "Burst_1.Ex",
+                            "Queue"         : "",
+                            "ReplyTo"       : "Burst_1_B_Responses",
+                            "RoutingKey"    : "Burst_1.B",
+                            "Headers"       : {
+                                                "Test"      : "Burst 1",
+                                                "Message"   : "Route to B"
+                                            },
+                            "Body"          : {
+                                                "Data"      : "Route to B"
+                                            },
+                            "AppID"         : "",
+                            "ClusterID"     : "",
+                            "UserID"        : "",
+                            "MessageID"     : "",        
+                            "ContentType"   : "application/json",
+                            "Encoding"      : "",
+                            "DeliveryMode"  : "2",
+                            "Priority"      : "0",
+                            "CorrelationID" : "",
+                            "Expiration"    : "",
+                            "Timestamp"     : ""
+                        }
+            ]
+        }
+    }
+}

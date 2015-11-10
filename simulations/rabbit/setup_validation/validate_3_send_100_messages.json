@@ -1,0 +1,129 @@
+{
+    "Simulation" : {
+        "Name"      : "Setup and Validation Test - Simple Send 100 Messages",
+        "StopFile"  : "/tmp/stop_test_setup_1",
+        "PauseFile" : "/tmp/pause_test_setup_1",
+        "Interval"  : "0.0001",
+        "CheckDone" : "0.0001",
+        "ResetAll"  : true,
+        "Type"      : "Rabbit",
+        "Rabbit"    : {
+            "Name"          : "Setup_VSSH_Pub",
+            "BrokerAddress" : [ "rabbit1", "rabbit2", "rabbit3" ],
+            "BrokerURL"     : "amqp://guest:guest@rabbit1:5672/%2F?connection_attempts=3&heartbeat_interval=3600",
+            "Account"       : {
+                              "User"        : "guest",
+                              "Password"    : "guest"
+            }
+        },
+        "Consumers" : {},
+        "BrokerEntities": {
+            "Exchanges" : [ 
+                        {
+                            "Type"          : "Topic",
+                            "Name"          : "Setup_VSSH.Ex",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        }
+            ],
+            "Queues"    : [
+                        {
+                            "Name"          : "Setup_VSSH_A_Messages",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Setup_VSSH_B_Messages",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Setup_VSSH_A_Responses",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Setup_VSSH_B_Responses",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        }
+            ],
+            "Bindings"  : [
+                        {
+                            "Exchange"      : "Setup_VSSH.Ex",
+                            "Queue"         : "Setup_VSSH_A_Messages",
+                            "RoutingKey"    : "Setup_VSSH.A"
+                        },
+                        {
+                            "Exchange"      : "Setup_VSSH.Ex",
+                            "Queue"         : "Setup_VSSH_B_Messages",
+                            "RoutingKey"    : "Setup_VSSH.B"
+                        }
+            ],
+            "Messages"  : [
+                        {
+                            "NumberToSend"  : "20",
+                            "MessageType"   : "AMQP",
+                            "Exchange"      : "Setup_VSSH.Ex",
+                            "Queue"         : "",
+                            "ReplyTo"       : "Setup_VSSH_A_Responses",
+                            "RoutingKey"    : "Setup_VSSH.A",
+                            "Headers"       : {
+                                                "Test"      : "Setup VSSH",
+                                                "Message"   : "Route to A"
+                                            },
+                            "Body"          : {
+                                                "Data"      : "Route to A"
+                                            },
+                            "AppID"         : "",
+                            "ClusterID"     : "",
+                            "UserID"        : "",
+                            "MessageID"     : "",        
+                            "ContentType"   : "application/json",
+                            "Encoding"      : "",
+                            "DeliveryMode"  : "2",
+                            "Priority"      : "0",
+                            "CorrelationID" : "",
+                            "Expiration"    : "",
+                            "Timestamp"     : ""
+                        },
+                        {
+                            "NumberToSend"  : "50",
+                            "MessageType"   : "AMQP",
+                            "Exchange"      : "Setup_VSSH.Ex",
+                            "Queue"         : "",
+                            "ReplyTo"       : "Setup_VSSH_B_Responses",
+                            "RoutingKey"    : "Setup_VSSH.B",
+                            "Headers"       : {
+                                                "Test"      : "Setup VSSH",
+                                                "Message"   : "Route to B"
+                                            },
+                            "Body"          : {
+                                                "Data"      : "Route to B"
+                                            },
+                            "AppID"         : "",
+                            "ClusterID"     : "",
+                            "UserID"        : "",
+                            "MessageID"     : "",        
+                            "ContentType"   : "application/json",
+                            "Encoding"      : "",
+                            "DeliveryMode"  : "2",
+                            "Priority"      : "0",
+                            "CorrelationID" : "",
+                            "Expiration"    : "",
+                            "Timestamp"     : ""
+                        }
+            ]
+        }
+    }
+}

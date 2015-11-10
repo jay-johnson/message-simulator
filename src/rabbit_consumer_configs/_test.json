@@ -1,0 +1,27 @@
+{
+    "Simulation" : {
+        "Name"      : "Validate that the Rabbit Consumer Class Works",
+        "StopFile"  : "/tmp/stop_test_consumer_TEST",
+        "PauseFile" : "/tmp/pause_test_consumer_TEST",
+        "Interval"  : "0.0001",
+        "CheckDone" : "1.0001",
+        "Type"      : "Rabbit",
+        "Rabbit"    : {
+            "Name"          : "TestConsumer_1",
+            "BrokerAddress" : [ "rabbit1", "rabbit2", "rabbit3" ],
+            "BrokerURL"     : "amqp://guest:guest@rabbit1:5672/%2F?connection_attempts=3&heartbeat_interval=3600",
+            "Account"       : {
+                              "User"        : "guest",
+                              "Password"    : "guest"
+            }
+        },
+        "Consumer"  : {
+            "NumberMessages"    : "10",
+            "ConsumerTag"       : "TESTConsumerTag",
+            "Queue"             : "Setup_VC_A_Messages",
+            "ReplyToQueue"      : "Setup_VC_A_Messages",
+            "ValidateBody"      : false,
+            "Expected"          : {}
+        }
+    }
+}

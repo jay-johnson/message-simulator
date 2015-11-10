@@ -1,0 +1,57 @@
+{
+    "Simulation" : {
+        "Name"      : "Stress Test 1 - Sending 10000000 Messages to a Fanout Exchange that copies each message to many Queues - Publisher",
+        "StopFile"  : "/tmp/stop_stress_1_b",
+        "PauseFile" : "/tmp/pause_stress_1_b",
+        "Interval"  : "0.0000001",
+        "CheckDone" : "0.0000001",
+        "ResetAll"  : false,
+        "Type"      : "Rabbit",
+        "Rabbit"    : {
+            "Name"          : "Stress_1_Worker",
+            "BrokerAddress" : [ "rabbit1", "rabbit2", "rabbit3" ],
+            "BrokerURL"     : "amqp://guest:guest@rabbit1:5672/%2F?connection_attempts=3&heartbeat_interval=3600",
+            "Account"       : {
+                              "User"        : "guest",
+                              "Password"    : "guest"
+            }
+        },
+        "Consumers" : {},
+        "BrokerEntities": {
+            "Exchanges" : [ 
+            ],
+            "Queues"    : [
+            ],
+            "Bindings"  : [
+            ],
+            "Messages"  : [
+                        {
+                            "NumberToSend"  : "10000000",
+                            "MessageType"   : "AMQP",
+                            "Exchange"      : "Stress_1.Ex",
+                            "Queue"         : "",
+                            "ReplyTo"       : "Stress_1_Responses",
+                            "RoutingKey"    : "",
+                            "Headers"       : {
+                                                "Test"      : "Stress 1 B",
+                                                "Message"   : "Route to All Queues by Fanout"
+                                            },
+                            "Body"          : {
+                                                "Data"      : "Route to All Queues by Fanout"
+                                            },
+                            "AppID"         : "",
+                            "ClusterID"     : "",
+                            "UserID"        : "",
+                            "MessageID"     : "",        
+                            "ContentType"   : "application/json",
+                            "Encoding"      : "",
+                            "DeliveryMode"  : "2",
+                            "Priority"      : "0",
+                            "CorrelationID" : "",
+                            "Expiration"    : "",
+                            "Timestamp"     : ""
+                        }
+            ]
+        }
+    }
+}

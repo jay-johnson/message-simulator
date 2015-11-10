@@ -1,0 +1,77 @@
+{
+    "Simulation" : {
+        "Name"      : "Setting up the Exchanges and Queues for Spring XD",
+        "StopFile"  : "/tmp/stop_test_xd_1",
+        "PauseFile" : "/tmp/pause_test_xd_1",
+        "Interval"  : "0.0001",
+        "CheckDone" : "0.0001",
+        "ResetAll"  : false,
+        "Type"      : "Rabbit",
+        "Rabbit"    : {
+            "Name"          : "MS_XD",
+            "BrokerAddress" : [ "rabbit1", "rabbit2", "rabbit3" ],
+            "BrokerURL"     : "amqp://guest:guest@rabbit1:5672/%2F?connection_attempts=3&heartbeat_interval=3600",
+            "Account"       : {
+                              "User"        : "guest",
+                              "Password"    : "guest"
+            }
+        },
+        "Consumers" : {},
+        "BrokerEntities": {
+            "Exchanges" : [ 
+                        {
+                            "Type"          : "Topic",
+                            "Name"          : "SpringXD.Source.Ex",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        }
+            ],
+            "Queues"    : [
+                        {
+                            "Name"          : "rabbittest",
+                            "Durable"       : false,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        }
+            ],
+            "Bindings"  : [
+                        {
+                            "Exchange"      : "SpringXD.Source.Ex",
+                            "Queue"         : "rabbittest",
+                            "RoutingKey"    : "Rabbit.MQTT.Test1.Rabbit1"
+                        }
+            ],
+            "Messages"  : [
+                        {
+                            "NumberToSend"  : "1",
+                            "MessageType"   : "AMQP",
+                            "Exchange"      : "SpringXD.Source.Ex",
+                            "Queue"         : "",
+                            "ReplyTo"       : "rabbittest_Reponses",
+                            "RoutingKey"    : "Rabbit.MQTT.Test1.Rabbit1",
+                            "Headers"       : {
+                                                "Test"      : "Hello World",
+                                                "Message"   : "Route to rabbittest for XD 1"
+                                            },
+                            "Body"          : {
+                                                "Data"      : "This is the Data from the Simulator's Spring XD Source Stream Test 1"
+                                            },
+                            "AppID"         : "",
+                            "ClusterID"     : "",
+                            "UserID"        : "",
+                            "MessageID"     : "",        
+                            "ContentType"   : "application/json",
+                            "Encoding"      : "",
+                            "DeliveryMode"  : "2",
+                            "Priority"      : "0",
+                            "CorrelationID" : "",
+                            "Expiration"    : "",
+                            "Timestamp"     : ""
+                        }
+            ]
+        }
+    }
+}

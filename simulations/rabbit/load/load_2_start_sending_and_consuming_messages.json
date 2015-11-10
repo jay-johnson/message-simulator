@@ -1,0 +1,158 @@
+{
+    "Simulation" : {
+        "Name"      : "Load - Reset Broker, Send Messages and Start Consumers for processing messages.",
+        "StopFile"  : "/tmp/stop_test_load_2",
+        "PauseFile" : "/tmp/pause_test_load_2",
+        "Interval"  : "0.0001",
+        "CheckDone" : "1.0001",
+        "ResetAll"  : true,
+        "Type"      : "Rabbit",
+        "Rabbit"    : {
+            "Name"          : "Load_2_Pub",
+            "BrokerAddress" : [ "rabbit1", "rabbit2", "rabbit3" ],
+            "BrokerURL"     : "amqp://guest:guest@rabbit1:5672/%2F?connection_attempts=3&heartbeat_interval=3600",
+            "Account"       : {
+                              "User"        : "guest",
+                              "Password"    : "guest"
+            }
+        },
+        "Consumers" : {
+            "PrefixName"    : "Load_2_",
+            "PIDDir"        : "/tmp/",
+            "TmpConfigDir"  : "/tmp/test5consumers_",
+            "StopConsumers" : "At End",
+            "ConsumeQueues" : [
+                        {
+                            "NumConsumers"  : "2",
+                            "Starter"       : "src/__start_rabbit_mq_consumer.py",
+                            "ConsumeInt"    : "0.5",
+                            "CheckDone"     : "0.5",
+                            "Queue"         : "Load_2_A_Messages",
+                            "ReplyToQueue"  : "Load_2_A_Responses",
+                            "NumberMessages": "100",
+                            "ValidateBody"  : false,
+                            "Expected"      : {}
+                        },
+                        {
+                            "NumConsumers"  : "2",
+                            "Starter"       : "src/__start_rabbit_mq_consumer.py",
+                            "ConsumeInt"    : "0.5",
+                            "CheckDone"     : "0.5",
+                            "Queue"         : "Load_2_B_Messages",
+                            "ReplyToQueue"  : "Load_2_B_Responses",
+                            "NumberMessages": "100",
+                            "ValidateBody"  : false,
+                            "Expected"      : {}
+                        }
+            ]
+        },
+        "BrokerEntities": {
+            "Exchanges" : [ 
+                        {
+                            "Type"          : "Topic",
+                            "Name"          : "Load_2.Ex",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        }
+            ],
+            "Queues"    : [
+                        {
+                            "Name"          : "Load_2_A_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Load_2_B_Messages",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Load_2_A_Responses",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        },
+                        {
+                            "Name"          : "Load_2_B_Responses",
+                            "Durable"       : true,
+                            "AutoDelete"    : false,
+                            "Exclusive"     : false,
+                            "Attributes"    : {}
+                        }
+            ],
+            "Bindings"  : [
+                        {
+                            "Exchange"      : "Load_2.Ex",
+                            "Queue"         : "Load_2_A_Messages",
+                            "RoutingKey"    : "Load_2.A"
+                        },
+                        {
+                            "Exchange"      : "Load_2.Ex",
+                            "Queue"         : "Load_2_B_Messages",
+                            "RoutingKey"    : "Load_2.B"
+                        }
+            ],
+            "Messages"  : [
+                        {
+                            "NumberToSend"  : "10",
+                            "MessageType"   : "AMQP",
+                            "Exchange"      : "Load_2.Ex",
+                            "Queue"         : "",
+                            "ReplyTo"       : "Load_2_A_Responses",
+                            "RoutingKey"    : "Load_2.A",
+                            "Headers"       : {
+                                                "Test"      : "Load 2",
+                                                "Message"   : "Route to A"
+                                            },
+                            "Body"          : {
+                                                "Data"      : "Route to A"
+                                            },
+                            "AppID"         : "",
+                            "ClusterID"     : "",
+                            "UserID"        : "",
+                            "MessageID"     : "",        
+                            "ContentType"   : "application/json",
+                            "Encoding"      : "",
+                            "DeliveryMode"  : "2",
+                            "Priority"      : "0",
+                            "CorrelationID" : "",
+                            "Expiration"    : "",
+                            "Timestamp"     : ""
+                        },
+                        {
+                            "NumberToSend"  : "10",
+                            "MessageType"   : "AMQP",
+                            "Exchange"      : "Load_2.Ex",
+                            "Queue"         : "",
+                            "ReplyTo"       : "Load_2_B_Responses",
+                            "RoutingKey"    : "Load_2.B",
+                            "Headers"       : {
+                                                "Test"      : "Load 2",
+                                                "Message"   : "Route to B"
+                                            },
+                            "Body"          : {
+                                                "Data"      : "Route to B"
+                                            },
+                            "AppID"         : "",
+                            "ClusterID"     : "",
+                            "UserID"        : "",
+                            "MessageID"     : "",        
+                            "ContentType"   : "application/json",
+                            "Encoding"      : "",
+                            "DeliveryMode"  : "2",
+                            "Priority"      : "0",
+                            "CorrelationID" : "",
+                            "Expiration"    : "",
+                            "Timestamp"     : ""
+                        }
+            ]
+        }
+    }
+}
