@@ -161,7 +161,7 @@ $ sudo pip install pika==0.10.0
 
 ### Networking
 
-For now, the Message Simulation tests target connecting to a RabbitMQ cluster available at the URI: [amqp://guest:guest@rabbit1:5672/](https://github.com/GetLevvel/message-simulator/blob/4906f7b5503770b939b0cc67f919c656133fdfbd/simulations/rabbit/setup_validation/hello_world.json#L13)
+For now, the Message Simulation tests target connecting to a RabbitMQ cluster available at the URI: [amqp://guest:guest@rabbit1:5672/](https://github.com/GetLevvel/message-simulator/blob/b8d3fcee1be762efdd7e7e755873236be79ac6b0/simulations/rabbit/setup_validation/hello_world.json#L13)
 
 By default most environments will not have a working RabbitMQ broker available at ```rabbit1``` that is listening on TCP port 5672 by default. To test if you do, you can use the command:
 
@@ -376,15 +376,15 @@ Here is the general control flow for running a Simulation:
 
 | Steps to Run a Simulation                    | View Source |
 | -------------------------------------------- | ----------- |
-| Create and Connect the Simulation Publisher  | [src/message_simulator.py#L67-L73](https://github.com/GetLevvel/message-simulator/blob/4906f7b5503770b939b0cc67f919c656133fdfbd/src/message_simulator.py#L67-L73) |
-| Run the Simulation                           | [src/message_simulator.py#L136](https://github.com/GetLevvel/message-simulator/blob/4906f7b5503770b939b0cc67f919c656133fdfbd/src/message_simulator.py#L136) |
-| Simulation Publisher connects to the Cluster | [src/rabbit_message_publisher.py#L255-L264](https://github.com/GetLevvel/message-simulator/blob/4906f7b5503770b939b0cc67f919c656133fdfbd/src/rabbit_message_publisher.py#L255-L264) |
-| Once connected create the Broker Entities    | [src/rabbit_message_publisher.py#L413-L455](https://github.com/GetLevvel/message-simulator/blob/4906f7b5503770b939b0cc67f919c656133fdfbd/src/rabbit_message_publisher.py#L413-L455) |
-| Start Consumers                              | [src/rabbit_message_publisher.py#L694-L698](https://github.com/GetLevvel/message-simulator/blob/4906f7b5503770b939b0cc67f919c656133fdfbd/src/rabbit_message_publisher.py#L694-L698) |
-| Start Message Publishing                     | [src/rabbit_message_publisher.py#L235-L239](https://github.com/GetLevvel/message-simulator/blob/4906f7b5503770b939b0cc67f919c656133fdfbd/src/rabbit_message_publisher.py#L235-L239) |
-| Handling Message Publishing                  | [src/rabbit_message_publisher.py#L1049-L1094](https://github.com/GetLevvel/message-simulator/blob/4906f7b5503770b939b0cc67f919c656133fdfbd/src/rabbit_message_publisher.py#L1049-L1094) |
-| Stop when all Messages are Published         | [src/rabbit_message_publisher.py#L1038-L1040](https://github.com/GetLevvel/message-simulator/blob/4906f7b5503770b939b0cc67f919c656133fdfbd/src/rabbit_message_publisher.py#L1038-L1040) |
-| Run Summary and Reports                      | [src/rabbit_message_publisher.py#L2562-L2593](https://github.com/GetLevvel/message-simulator/blob/4906f7b5503770b939b0cc67f919c656133fdfbd/src/rabbit_message_publisher.py#L2562-L2593) |
+| Create and Connect the Simulation Publisher  | [src/message_simulator.py#L67-L73](https://github.com/GetLevvel/message-simulator/blob/b8d3fcee1be762efdd7e7e755873236be79ac6b0/src/message_simulator.py#L67-L73) |
+| Run the Simulation                           | [src/message_simulator.py#L136](https://github.com/GetLevvel/message-simulator/blob/b8d3fcee1be762efdd7e7e755873236be79ac6b0/src/message_simulator.py#L136) |
+| Simulation Publisher connects to the Cluster | [src/rabbit_message_publisher.py#L255-L264](https://github.com/GetLevvel/message-simulator/blob/b8d3fcee1be762efdd7e7e755873236be79ac6b0/src/rabbit_message_publisher.py#L255-L264) |
+| Once connected create the Broker Entities    | [src/rabbit_message_publisher.py#L413-L455](https://github.com/GetLevvel/message-simulator/blob/b8d3fcee1be762efdd7e7e755873236be79ac6b0/src/rabbit_message_publisher.py#L413-L455) |
+| Start Consumers                              | [src/rabbit_message_publisher.py#L694-L698](https://github.com/GetLevvel/message-simulator/blob/b8d3fcee1be762efdd7e7e755873236be79ac6b0/src/rabbit_message_publisher.py#L694-L698) |
+| Start Message Publishing                     | [src/rabbit_message_publisher.py#L235-L239](https://github.com/GetLevvel/message-simulator/blob/b8d3fcee1be762efdd7e7e755873236be79ac6b0/src/rabbit_message_publisher.py#L235-L239) |
+| Handling Message Publishing                  | [src/rabbit_message_publisher.py#L1049-L1094](https://github.com/GetLevvel/message-simulator/blob/b8d3fcee1be762efdd7e7e755873236be79ac6b0/src/rabbit_message_publisher.py#L1049-L1094) |
+| Stop when all Messages are Published         | [src/rabbit_message_publisher.py#L1038-L1040](https://github.com/GetLevvel/message-simulator/blob/b8d3fcee1be762efdd7e7e755873236be79ac6b0/src/rabbit_message_publisher.py#L1038-L1040) |
+| Run Summary and Reports                      | [src/rabbit_message_publisher.py#L2562-L2593](https://github.com/GetLevvel/message-simulator/blob/b8d3fcee1be762efdd7e7e755873236be79ac6b0/src/rabbit_message_publisher.py#L2562-L2593) |
 
 #### Simulation Processing Order and Notes
 
@@ -412,15 +412,15 @@ Here is the general control flow for running a Simulation:
 
     Here is an example of an **AMQP** MessageType:
             
-    [simulations/rabbit/ha/ha_1_start_sending_and_crash_a_node.json#L76](https://github.com/GetLevvel/message-simulator/blob/4906f7b5503770b939b0cc67f919c656133fdfbd/simulations/rabbit/ha/ha_1_start_sending_and_crash_a_node.json#L76)
+    [simulations/rabbit/ha/ha_1_start_sending_and_crash_a_node.json#L76](https://github.com/GetLevvel/message-simulator/blob/b8d3fcee1be762efdd7e7e755873236be79ac6b0/simulations/rabbit/ha/ha_1_start_sending_and_crash_a_node.json#L76)
 
     Here is a **Custom Control Event** example of **Stopping a running Broker Node in the Cluster**:
 
-    [simulations/rabbit/ha/ha_1_start_sending_and_crash_a_node.json#L128](https://github.com/GetLevvel/message-simulator/blob/4906f7b5503770b939b0cc67f919c656133fdfbd/simulations/rabbit/ha/ha_1_start_sending_and_crash_a_node.json#L128)
+    [simulations/rabbit/ha/ha_1_start_sending_and_crash_a_node.json#L128](https://github.com/GetLevvel/message-simulator/blob/b8d3fcee1be762efdd7e7e755873236be79ac6b0/simulations/rabbit/ha/ha_1_start_sending_and_crash_a_node.json#L128)
 
     Each of the currently supported MessageTypes are defined in the ```publish_message``` method here:
     
-    [src/rabbit_message_publisher.py#L1049-L1094](https://github.com/GetLevvel/message-simulator/blob/4906f7b5503770b939b0cc67f919c656133fdfbd/src/rabbit_message_publisher.py#L1049-L1094)
+    [src/rabbit_message_publisher.py#L1049-L1094](https://github.com/GetLevvel/message-simulator/blob/b8d3fcee1be762efdd7e7e755873236be79ac6b0/src/rabbit_message_publisher.py#L1049-L1094)
 
 1. Stop when all Messages are Published
     
@@ -531,7 +531,7 @@ Here is the starting point for building your own simulation:
 
 ##### RabbitMQ Connection Object
 
-  Here is a sample RabbitMQ Connection Description from [Load Test 1](https://github.com/GetLevvel/message-simulator/blob/4906f7b5503770b939b0cc67f919c656133fdfbd/simulations/rabbit/load/load_1_send_100000_messages.json#L10-L18)
+  Here is a sample RabbitMQ Connection Description from [Load Test 1](https://github.com/GetLevvel/message-simulator/blob/b8d3fcee1be762efdd7e7e755873236be79ac6b0/simulations/rabbit/load/load_1_send_100000_messages.json#L10-L18)
 
   ```
   "Rabbit" :  {
@@ -551,7 +551,7 @@ Here is the starting point for building your own simulation:
 
 The Message Simulator creates Consumers as independent processes running on the host system. The Simulator tracks the PID for the new process and autogenerates a unique configuration file for each one. This allows consumers to be re-run independently from a simulation as well as for parallelizing how fast messages are consumed from a Queue. Consumers assume the Exchanges, Queues, and Bindings are already created for them to function properly.
 
-Here is a sample Consumers Description from [Load Test 3](https://github.com/GetLevvel/message-simulator/blob/4906f7b5503770b939b0cc67f919c656133fdfbd/simulations/rabbit/load/load_3_start_sending_and_leave_consumers_running.json#L19-L47) 
+Here is a sample Consumers Description from [Load Test 3](https://github.com/GetLevvel/message-simulator/blob/b8d3fcee1be762efdd7e7e755873236be79ac6b0/simulations/rabbit/load/load_3_start_sending_and_leave_consumers_running.json#L19-L47) 
 
 ```
 "Consumers" : {
@@ -598,7 +598,7 @@ All 4 Consumers will shut down as soon as they can consume 100 messages from the
 
   Each node in the Exchanges list describes an Exchange to create in the cluster. 
 
-  Here is a sample Exchanges list from [Load Test 1](https://github.com/GetLevvel/message-simulator/blob/4906f7b5503770b939b0cc67f919c656133fdfbd/simulations/rabbit/load/load_1_send_100000_messages.json#L21-L30)
+  Here is a sample Exchanges list from [Load Test 1](https://github.com/GetLevvel/message-simulator/blob/b8d3fcee1be762efdd7e7e755873236be79ac6b0/simulations/rabbit/load/load_1_send_100000_messages.json#L21-L30)
 
   ```
   "Exchanges" : [ 
@@ -619,7 +619,7 @@ All 4 Consumers will shut down as soon as they can consume 100 messages from the
  
   Each node in the Queues list describes a Queue to create in the cluster. 
 
-  Here is a sample Queues list from [Load Test 1](https://github.com/GetLevvel/message-simulator/blob/4906f7b5503770b939b0cc67f919c656133fdfbd/simulations/rabbit/load/load_1_send_100000_messages.json#L31-L60)
+  Here is a sample Queues list from [Load Test 1](https://github.com/GetLevvel/message-simulator/blob/b8d3fcee1be762efdd7e7e755873236be79ac6b0/simulations/rabbit/load/load_1_send_100000_messages.json#L31-L60)
 
   ```
   "Queues"    : [
@@ -660,7 +660,7 @@ All 4 Consumers will shut down as soon as they can consume 100 messages from the
 
   Each node in the Bindings list describes a RabbitMQ binding for an Exchange to route messages to a Queue
 
-  Here is a sample Bindings list from [Load Test 1](https://github.com/GetLevvel/message-simulator/blob/4906f7b5503770b939b0cc67f919c656133fdfbd/simulations/rabbit/load/load_1_send_100000_messages.json#L61-L72)
+  Here is a sample Bindings list from [Load Test 1](https://github.com/GetLevvel/message-simulator/blob/b8d3fcee1be762efdd7e7e755873236be79ac6b0/simulations/rabbit/load/load_1_send_100000_messages.json#L61-L72)
 
   ```
   "Bindings"  : [
@@ -686,7 +686,7 @@ All 4 Consumers will shut down as soon as they can consume 100 messages from the
 
 Each node in the Messages list is considered a set of messages. The simulator can send batches of AMQP messages, and it also supports handling for Custom Control Events as well.
 
-Here is a sample Messages list from [High Availability Test 2](https://github.com/GetLevvel/message-simulator/blob/4906f7b5503770b939b0cc67f919c656133fdfbd/simulations/rabbit/ha/ha_2_start_sending_and_stop_then_start_a_node.json#L73-L289)
+Here is a sample Messages list from [High Availability Test 2](https://github.com/GetLevvel/message-simulator/blob/b8d3fcee1be762efdd7e7e755873236be79ac6b0/simulations/rabbit/ha/ha_2_start_sending_and_stop_then_start_a_node.json#L73-L289)
 
 ```
 "Messages"  : [
@@ -938,7 +938,7 @@ More Custom Control Events and message types will be supported in the future, he
 
 #### Building your own Messages and Custom Control Events
 
-  You can develop and extend support for your own messages and events by editing the [publish_message code](https://github.com/GetLevvel/message-simulator/blob/4906f7b5503770b939b0cc67f919c656133fdfbd/src/rabbit_message_publisher.py#L1049-L1074).
+  You can develop and extend support for your own messages and events by editing the [publish_message code](https://github.com/GetLevvel/message-simulator/blob/b8d3fcee1be762efdd7e7e755873236be79ac6b0/src/rabbit_message_publisher.py#L1049-L1074).
 
 #### Simulation Attributes and Configuration
 
